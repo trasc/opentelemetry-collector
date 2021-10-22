@@ -183,6 +183,13 @@ func NewResourceMetrics() ResourceMetrics {
 	return newResourceMetrics(&otlpmetrics.ResourceMetrics{})
 }
 
+// MoveTo moves all properties from the current struct to dest
+// reseting the current instance to its zero value
+func (ms ResourceMetrics) MoveTo(dest ResourceMetrics) {
+	*dest.orig = *ms.orig
+	*ms.orig = otlpmetrics.ResourceMetrics{}
+}
+
 // Resource returns the resource associated with this ResourceMetrics.
 func (ms ResourceMetrics) Resource() Resource {
 	return newResource(&(*ms.orig).Resource)
@@ -368,6 +375,13 @@ func newInstrumentationLibraryMetrics(orig *otlpmetrics.InstrumentationLibraryMe
 // This must be used only in testing code since no "Set" method available.
 func NewInstrumentationLibraryMetrics() InstrumentationLibraryMetrics {
 	return newInstrumentationLibraryMetrics(&otlpmetrics.InstrumentationLibraryMetrics{})
+}
+
+// MoveTo moves all properties from the current struct to dest
+// reseting the current instance to its zero value
+func (ms InstrumentationLibraryMetrics) MoveTo(dest InstrumentationLibraryMetrics) {
+	*dest.orig = *ms.orig
+	*ms.orig = otlpmetrics.InstrumentationLibraryMetrics{}
 }
 
 // InstrumentationLibrary returns the instrumentationlibrary associated with this InstrumentationLibraryMetrics.
@@ -558,6 +572,13 @@ func NewMetric() Metric {
 	return newMetric(&otlpmetrics.Metric{})
 }
 
+// MoveTo moves all properties from the current struct to dest
+// reseting the current instance to its zero value
+func (ms Metric) MoveTo(dest Metric) {
+	*dest.orig = *ms.orig
+	*ms.orig = otlpmetrics.Metric{}
+}
+
 // Name returns the name associated with this Metric.
 func (ms Metric) Name() string {
 	return (*ms.orig).Name
@@ -619,6 +640,13 @@ func NewGauge() Gauge {
 	return newGauge(&otlpmetrics.Gauge{})
 }
 
+// MoveTo moves all properties from the current struct to dest
+// reseting the current instance to its zero value
+func (ms Gauge) MoveTo(dest Gauge) {
+	*dest.orig = *ms.orig
+	*ms.orig = otlpmetrics.Gauge{}
+}
+
 // DataPoints returns the DataPoints associated with this Gauge.
 func (ms Gauge) DataPoints() NumberDataPointSlice {
 	return newNumberDataPointSlice(&(*ms.orig).DataPoints)
@@ -650,6 +678,13 @@ func newSum(orig *otlpmetrics.Sum) Sum {
 // This must be used only in testing code since no "Set" method available.
 func NewSum() Sum {
 	return newSum(&otlpmetrics.Sum{})
+}
+
+// MoveTo moves all properties from the current struct to dest
+// reseting the current instance to its zero value
+func (ms Sum) MoveTo(dest Sum) {
+	*dest.orig = *ms.orig
+	*ms.orig = otlpmetrics.Sum{}
 }
 
 // AggregationTemporality returns the aggregationtemporality associated with this Sum.
@@ -707,6 +742,13 @@ func NewHistogram() Histogram {
 	return newHistogram(&otlpmetrics.Histogram{})
 }
 
+// MoveTo moves all properties from the current struct to dest
+// reseting the current instance to its zero value
+func (ms Histogram) MoveTo(dest Histogram) {
+	*dest.orig = *ms.orig
+	*ms.orig = otlpmetrics.Histogram{}
+}
+
 // AggregationTemporality returns the aggregationtemporality associated with this Histogram.
 func (ms Histogram) AggregationTemporality() MetricAggregationTemporality {
 	return MetricAggregationTemporality((*ms.orig).AggregationTemporality)
@@ -749,6 +791,13 @@ func newSummary(orig *otlpmetrics.Summary) Summary {
 // This must be used only in testing code since no "Set" method available.
 func NewSummary() Summary {
 	return newSummary(&otlpmetrics.Summary{})
+}
+
+// MoveTo moves all properties from the current struct to dest
+// reseting the current instance to its zero value
+func (ms Summary) MoveTo(dest Summary) {
+	*dest.orig = *ms.orig
+	*ms.orig = otlpmetrics.Summary{}
 }
 
 // DataPoints returns the DataPoints associated with this Summary.
@@ -919,6 +968,13 @@ func newNumberDataPoint(orig *otlpmetrics.NumberDataPoint) NumberDataPoint {
 // This must be used only in testing code since no "Set" method available.
 func NewNumberDataPoint() NumberDataPoint {
 	return newNumberDataPoint(&otlpmetrics.NumberDataPoint{})
+}
+
+// MoveTo moves all properties from the current struct to dest
+// reseting the current instance to its zero value
+func (ms NumberDataPoint) MoveTo(dest NumberDataPoint) {
+	*dest.orig = *ms.orig
+	*ms.orig = otlpmetrics.NumberDataPoint{}
 }
 
 // Attributes returns the Attributes associated with this NumberDataPoint.
@@ -1159,6 +1215,13 @@ func newHistogramDataPoint(orig *otlpmetrics.HistogramDataPoint) HistogramDataPo
 // This must be used only in testing code since no "Set" method available.
 func NewHistogramDataPoint() HistogramDataPoint {
 	return newHistogramDataPoint(&otlpmetrics.HistogramDataPoint{})
+}
+
+// MoveTo moves all properties from the current struct to dest
+// reseting the current instance to its zero value
+func (ms HistogramDataPoint) MoveTo(dest HistogramDataPoint) {
+	*dest.orig = *ms.orig
+	*ms.orig = otlpmetrics.HistogramDataPoint{}
 }
 
 // Attributes returns the Attributes associated with this HistogramDataPoint.
@@ -1414,6 +1477,13 @@ func NewSummaryDataPoint() SummaryDataPoint {
 	return newSummaryDataPoint(&otlpmetrics.SummaryDataPoint{})
 }
 
+// MoveTo moves all properties from the current struct to dest
+// reseting the current instance to its zero value
+func (ms SummaryDataPoint) MoveTo(dest SummaryDataPoint) {
+	*dest.orig = *ms.orig
+	*ms.orig = otlpmetrics.SummaryDataPoint{}
+}
+
 // Attributes returns the Attributes associated with this SummaryDataPoint.
 func (ms SummaryDataPoint) Attributes() AttributeMap {
 	return newAttributeMap(&(*ms.orig).Attributes)
@@ -1645,6 +1715,13 @@ func NewValueAtQuantile() ValueAtQuantile {
 	return newValueAtQuantile(&otlpmetrics.SummaryDataPoint_ValueAtQuantile{})
 }
 
+// MoveTo moves all properties from the current struct to dest
+// reseting the current instance to its zero value
+func (ms ValueAtQuantile) MoveTo(dest ValueAtQuantile) {
+	*dest.orig = *ms.orig
+	*ms.orig = otlpmetrics.SummaryDataPoint_ValueAtQuantile{}
+}
+
 // Quantile returns the quantile associated with this ValueAtQuantile.
 func (ms ValueAtQuantile) Quantile() float64 {
 	return (*ms.orig).Quantile
@@ -1813,6 +1890,13 @@ func newExemplar(orig *otlpmetrics.Exemplar) Exemplar {
 // This must be used only in testing code since no "Set" method available.
 func NewExemplar() Exemplar {
 	return newExemplar(&otlpmetrics.Exemplar{})
+}
+
+// MoveTo moves all properties from the current struct to dest
+// reseting the current instance to its zero value
+func (ms Exemplar) MoveTo(dest Exemplar) {
+	*dest.orig = *ms.orig
+	*ms.orig = otlpmetrics.Exemplar{}
 }
 
 // Timestamp returns the timestamp associated with this Exemplar.

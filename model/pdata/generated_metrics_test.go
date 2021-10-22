@@ -135,6 +135,14 @@ func TestResourceMetricsSlice_RemoveIf(t *testing.T) {
 	assert.Equal(t, 5, filtered.Len())
 }
 
+func TestResourceMetrics_MoveTo(t *testing.T) {
+	ms := generateTestResourceMetrics()
+	dest := NewResourceMetrics()
+	ms.MoveTo(dest)
+	assert.EqualValues(t, NewResourceMetrics(), ms)
+	assert.EqualValues(t, generateTestResourceMetrics(), dest)
+}
+
 func TestResourceMetrics_CopyTo(t *testing.T) {
 	ms := NewResourceMetrics()
 	generateTestResourceMetrics().CopyTo(ms)
@@ -271,6 +279,14 @@ func TestInstrumentationLibraryMetricsSlice_RemoveIf(t *testing.T) {
 		return pos%3 == 0
 	})
 	assert.Equal(t, 5, filtered.Len())
+}
+
+func TestInstrumentationLibraryMetrics_MoveTo(t *testing.T) {
+	ms := generateTestInstrumentationLibraryMetrics()
+	dest := NewInstrumentationLibraryMetrics()
+	ms.MoveTo(dest)
+	assert.EqualValues(t, NewInstrumentationLibraryMetrics(), ms)
+	assert.EqualValues(t, generateTestInstrumentationLibraryMetrics(), dest)
 }
 
 func TestInstrumentationLibraryMetrics_CopyTo(t *testing.T) {
@@ -411,6 +427,14 @@ func TestMetricSlice_RemoveIf(t *testing.T) {
 	assert.Equal(t, 5, filtered.Len())
 }
 
+func TestMetric_MoveTo(t *testing.T) {
+	ms := generateTestMetric()
+	dest := NewMetric()
+	ms.MoveTo(dest)
+	assert.EqualValues(t, NewMetric(), ms)
+	assert.EqualValues(t, generateTestMetric(), dest)
+}
+
 func TestMetric_CopyTo(t *testing.T) {
 	ms := NewMetric()
 	generateTestMetric().CopyTo(ms)
@@ -441,6 +465,14 @@ func TestMetric_Unit(t *testing.T) {
 	assert.EqualValues(t, testValUnit, ms.Unit())
 }
 
+func TestGauge_MoveTo(t *testing.T) {
+	ms := generateTestGauge()
+	dest := NewGauge()
+	ms.MoveTo(dest)
+	assert.EqualValues(t, NewGauge(), ms)
+	assert.EqualValues(t, generateTestGauge(), dest)
+}
+
 func TestGauge_CopyTo(t *testing.T) {
 	ms := NewGauge()
 	generateTestGauge().CopyTo(ms)
@@ -453,6 +485,14 @@ func TestGauge_DataPoints(t *testing.T) {
 	fillTestNumberDataPointSlice(ms.DataPoints())
 	testValDataPoints := generateTestNumberDataPointSlice()
 	assert.EqualValues(t, testValDataPoints, ms.DataPoints())
+}
+
+func TestSum_MoveTo(t *testing.T) {
+	ms := generateTestSum()
+	dest := NewSum()
+	ms.MoveTo(dest)
+	assert.EqualValues(t, NewSum(), ms)
+	assert.EqualValues(t, generateTestSum(), dest)
 }
 
 func TestSum_CopyTo(t *testing.T) {
@@ -485,6 +525,14 @@ func TestSum_DataPoints(t *testing.T) {
 	assert.EqualValues(t, testValDataPoints, ms.DataPoints())
 }
 
+func TestHistogram_MoveTo(t *testing.T) {
+	ms := generateTestHistogram()
+	dest := NewHistogram()
+	ms.MoveTo(dest)
+	assert.EqualValues(t, NewHistogram(), ms)
+	assert.EqualValues(t, generateTestHistogram(), dest)
+}
+
 func TestHistogram_CopyTo(t *testing.T) {
 	ms := NewHistogram()
 	generateTestHistogram().CopyTo(ms)
@@ -505,6 +553,14 @@ func TestHistogram_DataPoints(t *testing.T) {
 	fillTestHistogramDataPointSlice(ms.DataPoints())
 	testValDataPoints := generateTestHistogramDataPointSlice()
 	assert.EqualValues(t, testValDataPoints, ms.DataPoints())
+}
+
+func TestSummary_MoveTo(t *testing.T) {
+	ms := generateTestSummary()
+	dest := NewSummary()
+	ms.MoveTo(dest)
+	assert.EqualValues(t, NewSummary(), ms)
+	assert.EqualValues(t, generateTestSummary(), dest)
 }
 
 func TestSummary_CopyTo(t *testing.T) {
@@ -629,6 +685,14 @@ func TestNumberDataPointSlice_RemoveIf(t *testing.T) {
 		return pos%3 == 0
 	})
 	assert.Equal(t, 5, filtered.Len())
+}
+
+func TestNumberDataPoint_MoveTo(t *testing.T) {
+	ms := generateTestNumberDataPoint()
+	dest := NewNumberDataPoint()
+	ms.MoveTo(dest)
+	assert.EqualValues(t, NewNumberDataPoint(), ms)
+	assert.EqualValues(t, generateTestNumberDataPoint(), dest)
 }
 
 func TestNumberDataPoint_CopyTo(t *testing.T) {
@@ -800,6 +864,14 @@ func TestHistogramDataPointSlice_RemoveIf(t *testing.T) {
 		return pos%3 == 0
 	})
 	assert.Equal(t, 5, filtered.Len())
+}
+
+func TestHistogramDataPoint_MoveTo(t *testing.T) {
+	ms := generateTestHistogramDataPoint()
+	dest := NewHistogramDataPoint()
+	ms.MoveTo(dest)
+	assert.EqualValues(t, NewHistogramDataPoint(), ms)
+	assert.EqualValues(t, generateTestHistogramDataPoint(), dest)
 }
 
 func TestHistogramDataPoint_CopyTo(t *testing.T) {
@@ -990,6 +1062,14 @@ func TestSummaryDataPointSlice_RemoveIf(t *testing.T) {
 	assert.Equal(t, 5, filtered.Len())
 }
 
+func TestSummaryDataPoint_MoveTo(t *testing.T) {
+	ms := generateTestSummaryDataPoint()
+	dest := NewSummaryDataPoint()
+	ms.MoveTo(dest)
+	assert.EqualValues(t, NewSummaryDataPoint(), ms)
+	assert.EqualValues(t, generateTestSummaryDataPoint(), dest)
+}
+
 func TestSummaryDataPoint_CopyTo(t *testing.T) {
 	ms := NewSummaryDataPoint()
 	generateTestSummaryDataPoint().CopyTo(ms)
@@ -1162,6 +1242,14 @@ func TestValueAtQuantileSlice_RemoveIf(t *testing.T) {
 	assert.Equal(t, 5, filtered.Len())
 }
 
+func TestValueAtQuantile_MoveTo(t *testing.T) {
+	ms := generateTestValueAtQuantile()
+	dest := NewValueAtQuantile()
+	ms.MoveTo(dest)
+	assert.EqualValues(t, NewValueAtQuantile(), ms)
+	assert.EqualValues(t, generateTestValueAtQuantile(), dest)
+}
+
 func TestValueAtQuantile_CopyTo(t *testing.T) {
 	ms := NewValueAtQuantile()
 	generateTestValueAtQuantile().CopyTo(ms)
@@ -1283,6 +1371,14 @@ func TestExemplarSlice_RemoveIf(t *testing.T) {
 		return pos%3 == 0
 	})
 	assert.Equal(t, 5, filtered.Len())
+}
+
+func TestExemplar_MoveTo(t *testing.T) {
+	ms := generateTestExemplar()
+	dest := NewExemplar()
+	ms.MoveTo(dest)
+	assert.EqualValues(t, NewExemplar(), ms)
+	assert.EqualValues(t, generateTestExemplar(), dest)
 }
 
 func TestExemplar_CopyTo(t *testing.T) {
